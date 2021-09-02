@@ -18,6 +18,7 @@ public class PimPage {
     public SelenideElement employeeListButton = $(By.id("menu_pim_viewEmployeeList"));
     public SelenideElement employeeForm = $(By.id("frmList_ohrmListComponent"));
     public SelenideElement personalDetailsForm = $(By.id("pdMainContainer"));
+    public SelenideElement includeButton = $(By.id("empsearch_termination"));
     public SelenideElement currentAndPastEmployeesButton =
             $(By.xpath("//option[text()='Current and Past Employees']"));
     public String firstName = "Vasili";
@@ -40,6 +41,9 @@ public class PimPage {
         employeeListEditButton.click();
         employeeListSaveButton.click();
         employeeListButton.click();
+
+        currentAndPastEmployeesButton.click();
+
 
     }
     public void deleteEmploee(){
