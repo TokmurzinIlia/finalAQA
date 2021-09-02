@@ -2,13 +2,15 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.*;
 
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import pages.*;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
-
+@RunWith(JUnitPlatform.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
