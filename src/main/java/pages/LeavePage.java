@@ -13,6 +13,7 @@ public class LeavePage {
     SelenideElement assingLeaveContent = $(By.id("content"));
     SelenideElement employeeNameField = $(By.id("assignleave_txtEmployee_empName"));
     SelenideElement leaveTypeField = $(By.id("assignleave_txtLeaveType"));
+    SelenideElement leaveTypeUSBereavementField = $(By.xpath("//select[@id=\"assignleave_txtLeaveType\"]//option[@value = \"3\"]"));
     SelenideElement leaveBalanceField = $(By.id("assignleave_leaveBalance"));
     SelenideElement leaveFromDateField = $(By.id("assignleave_txtFromDate"));
     SelenideElement leaveToDateField = $(By.id("assignleave_txtToDate"));
@@ -43,13 +44,24 @@ public class LeavePage {
     SelenideElement durationAmpmAftenoonField = $(By.xpath("//option[@value=\"PM\"]"));
     SelenideElement durationDurationOneDateField = $(By.id("assignleave_duration_duration"));
     SelenideElement durationDurationOneDateHalfDayField = $(By.xpath("//select[@id=\"assignleave_duration_duration\"]//option[@value=\"half_day\"]"));
+    SelenideElement durationDurationOneDateHalfDayAfternoonField = $(By.xpath("//span[@id=\"assignleave_duration_half_day_content\"]//option[@value=\"PM\"]"));
     SelenideElement durationDurationOneDateHalfDayAmpmField = $(By.id("assignleave_duration_ampm"));
     SelenideElement durationDurationOneDateHalfDaySpecifyTimeField = $(By.xpath("//select[@id=\"assignleave_duration_duration\"]//option[@value=\"specify_time\"]"));
+
     SelenideElement durationDurationSpecifyTimeOneDateFromField = $(By.id("assignleave_duration_time_from"));
     SelenideElement durationDurationSpecifyTimeOneDateToField = $(By.id("assignleave_duration_time_to"));
     SelenideElement durationDurationSpecifyTimeDurationOneDateField = $(By.xpath("//li[@style=\"\"]//input[@class=\"time_range_duration\"]"));
+    SelenideElement assingButton = $(By.id("assignBtn"));
+    SelenideElement oKButton = $(By.id("confirmOkButton"));
+    SelenideElement leaveListButton = $(By.id("menu_leave_viewLeaveList"));
+    SelenideElement showLeaveWithStatusAllCheckbox = $(By.id("leaveList_chkSearchFilter_checkboxgroup_allcheck"));
+    SelenideElement emploeeLeaveListField = $(By.id("leaveList_txtEmployee_empName"));
+    SelenideElement searchButton = $(By.id("btnSearch"));
+    public SelenideElement leaveListSearchForm = $(By.id("search-results"));
     String fromDate = "2021-09-09";
     String toDate = "2021-09-26";
+    public String emploeeName = "Otto Pilot";
+    String comment = "New year";
 
 
     public void addAssingLeaveFormValidation(){
@@ -157,6 +169,26 @@ public class LeavePage {
     public void pathAssingLeave(){
         leaveButton.click();
         assingLeaveButton.click();
+    }
+    public void addAssingLeave(String emploeeName){
+        employeeNameField.setValue(emploeeName).pressEnter();
+        leaveTypeField.click();
+        leaveTypeUSBereavementField.click();
+        leaveFromDateField.clear();
+        leaveFromDateField.setValue(fromDate).pressEnter();
+        leaveToDateField.clear();
+        leaveToDateField.setValue(fromDate).pressEnter();
+        durationDurationOneDateField.click();
+        durationDurationOneDateHalfDayField.click();
+        durationDurationOneDateHalfDayAfternoonField.click();
+        leaveCommentField.setValue(comment);
+        assingButton.click();
+        oKButton.click();
+        leaveListButton.click();
+        showLeaveWithStatusAllCheckbox.click();
+        emploeeLeaveListField.setValue(emploeeName).pressEnter();
+        searchButton.click();
+
     }
 }
 

@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import io.qameta.allure.Flaky;
 import org.junit.jupiter.api.*;
 
 import org.junit.platform.runner.JUnitPlatform;
@@ -72,8 +73,9 @@ public void loginTest() {
     @Order(2)
 
     public void addEmployee(){
-        PimPage pimPage = new PimPage();
+
         LoginPage loginPage = new LoginPage();
+        PimPage pimPage = new PimPage();
         loginPage.logIn();
         pimPage.addEmployee(pimPage.firstName, pimPage.lastName);
         String employeeFullName = pimPage.firstName + " " + pimPage.lastName;
@@ -97,7 +99,7 @@ public void loginTest() {
         LoginPage loginPage = new LoginPage();
         PimPage pimPage = new PimPage();
         loginPage.logIn();
-        pimPage.deleteEmploee();
+        pimPage.deleteEmploee(pimPage.firstName, pimPage.lastName);
         pimPage.resultTableForm.shouldNotBe(text(pimPage.lastName));
 
     }
@@ -173,5 +175,37 @@ public void loginTest() {
         leavePage.pathAssingLeave();
         leavePage.addAssingLeaveFormValidation();
     }
+
+
+    @Test
+    @Flaky
+    @Order(12)
+    public void addAssingLeave(){
+        LoginPage loginPage = new LoginPage();
+        LeavePage leavePage = new LeavePage();
+        PimPage pimPage = new PimPage();
+        loginPage.logIn();
+        pimPage.addEmployee(pimPage.firstName, pimPage.lastName);
+        String employeeFullName = pimPage.firstName + " " + pimPage.lastName;
+        pimPage.employeeForm.shouldBe(text(employeeFullName));
+
+        leavePage.pathAssingLeave();
+        leavePage.addAssingLeave(employeeFullName);
+        leavePage.leaveListSearchForm.shouldBe(text(employeeFullName));
+    }
+
+
+    @Test
+
+    @Order(13)
+    public void dashBoardPagePresenceElement(){
+        LoginPage loginPage = new LoginPage();
+        DashBoardPage dashBoardPage = new DashBoardPage();
+        loginPage.logIn();
+        dashBoardPage.dashBoardPagePresenceElement();
+    }
+
+
+
 
 }

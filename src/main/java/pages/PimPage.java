@@ -50,7 +50,7 @@ public class PimPage {
 
 
     }
-    public void deleteEmploee(){
+    public void deleteEmploee(String firstName, String lastName){
         pimButton.click();
         currentAndPastEmployeesButton.click();
         employeeSearchField.setValue(firstName + " " + lastName);
