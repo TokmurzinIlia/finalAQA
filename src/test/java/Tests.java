@@ -192,6 +192,7 @@ public void loginTest() {
         leavePage.pathAssingLeave();
         leavePage.addAssingLeave(employeeFullName);
         leavePage.leaveListSearchForm.shouldBe(text(employeeFullName));
+        pimPage.deleteEmploee(pimPage.firstName, pimPage.lastName);
     }
 
 
