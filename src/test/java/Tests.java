@@ -10,7 +10,7 @@ import pages.*;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
-@RunWith(JUnitPlatform.class)
+//@RunWith(JUnitPlatform.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
