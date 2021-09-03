@@ -32,6 +32,8 @@ public class RecruitmentPage {
     SelenideElement candidateContactDateOfApplication = $(By.id("addCandidate_appliedDate"));
     SelenideElement candidateContactConsentToKeepData = $(By.id("addCandidate_consentToKeepData"));
     SelenideElement candidateContactSaveButton = $(By.id("btnSave"));
+    SelenideElement candidateNameSearchField = $(By.id("candidateSearch_candidateName"));
+    SelenideElement candidateNameSearchButton = $(By.id("btnSrch"));
 
     public String firstName = "Silim";
     public String lastName = "Dilim";
@@ -66,14 +68,21 @@ public class RecruitmentPage {
         candidateContactDateOfApplication.setValue(dateOfApplication).pressEnter();
         candidateContactConsentToKeepData.click();
         candidateContactSaveButton.click();
+        candidateButton();
+        candidateNameSearchField.setValue(firstName + " " + lastName);
+        candidateNameSearchButton.click();
 
     }
 
     public void deleteCandidate(){
         recruitmentButton.click();
+        candidateNameSearchField.setValue(firstName + " " + lastName);
+        candidateNameSearchButton.click();
         candidateNameCheckbox.click();
         deleteCandidateButton.click();
         deleteRecordOkButton.click();
+        candidateNameSearchField.setValue(firstName + " " + lastName);
+        candidateNameSearchButton.click();
     }
     public void candidateButton(){
         candidateButton.click();

@@ -109,7 +109,7 @@ public void loginTest() {
         RecruitmentPage recruitmentPage = new RecruitmentPage();
         loginPage.logIn();
         recruitmentPage.addCandidate();
-        recruitmentPage.candidateButton();
+
         recruitmentPage.candidateForm.shouldBe
                 (text(recruitmentPage.firstName + " "
                         + recruitmentPage.lastName));

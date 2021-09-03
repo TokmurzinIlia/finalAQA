@@ -29,6 +29,8 @@ public class PimPage {
     public SelenideElement deleteEmployeeButton = $(By.id("btnDelete"));
     public SelenideElement resultTableForm = $(By.id("frmList_ohrmListComponent"));
     public SelenideElement deleteRecordOkButton = $(By.id("dialogDeleteBtn"));
+    public SelenideElement employeeSearchField = $(By.id("empsearch_employee_name_empName"));
+    public SelenideElement employeeSearchButton = $(By.id("searchBtn"));
 
 
     public void addEmployee(String firstName, String lastName) {
@@ -41,17 +43,23 @@ public class PimPage {
         employeeListEditButton.click();
         employeeListSaveButton.click();
         employeeListButton.click();
-
         currentAndPastEmployeesButton.click();
+        employeeSearchField.setValue(firstName + " " + lastName);
+        employeeSearchButton.click();
+
 
 
     }
     public void deleteEmploee(){
         pimButton.click();
         currentAndPastEmployeesButton.click();
+        employeeSearchField.setValue(firstName + " " + lastName);
+        employeeSearchButton.click();
         employeeNameCheckbox.click();
         deleteEmployeeButton.click();
         deleteRecordOkButton.click();
+        employeeSearchField.setValue(firstName + " " + lastName);
+        employeeSearchButton.click();
 
     }
 

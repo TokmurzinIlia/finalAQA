@@ -23,6 +23,9 @@ public class AdminPage {
     public SelenideElement resultTableForm = $(By.id("resultTable"));
     public String userName = "Vasili Peterkin";
     public String userNameMarkerLocator = "//a[text()='" + userName + "']/../..//input[@name=\"chkSelectRow[]\"]";
+    public SelenideElement userSearchField = $(By.id("searchSystemUser_userName"));
+    public SelenideElement userSearchButton = $(By.id("searchBtn"));
+
     public SelenideElement userNameMarker = $(By.xpath(userNameMarkerLocator));
     public SelenideElement deleteRecordOkButton = $(By.id("dialogDeleteBtn"));
     public SelenideElement jobButton = $(By.id("menu_admin_Job"));
@@ -110,13 +113,18 @@ public class AdminPage {
         passwordField.setValue(password);
         confirmPasswordField.setValue(confirmPassword);
         saveButton.click();
+        userSearchField.setValue(userName);
+        userSearchButton.click();
     }
 
     public void deleteUser(){
-
+        userSearchField.setValue(userName);
+        userSearchButton.click();
         userNameMarker.click();
         deleteButton.click();
         deleteRecordOkButton.click();
+        userSearchField.setValue(userName);
+        userSearchButton.click();
 
     }
 
