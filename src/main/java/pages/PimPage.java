@@ -1,9 +1,12 @@
 package pages;
 
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 
@@ -31,7 +34,29 @@ public class PimPage {
     public SelenideElement deleteRecordOkButton = $(By.id("dialogDeleteBtn"));
     public SelenideElement employeeSearchField = $(By.id("empsearch_employee_name_empName"));
     public SelenideElement employeeSearchButton = $(By.id("searchBtn"));
-
+    public SelenideElement employeeListSubUnitButton = $(By.id("empsearch_sub_unit"));
+    public SelenideElement employeeListSubUnitSalesButton
+            = $(By.xpath("//select[@id=\"empsearch_sub_unit\"]//option[@value=\"8\"]"));
+    public SelenideElement employeeListSubUnitSalesNathanSales
+            = $(By.xpath("//a[(text()='Nathan')]"));
+    public SelenideElement personalDetailsSalesForm = $(By.id("employee-details"));
+    public SelenideElement personalDetailsSalesFormFirstNameField = $(By.id("personal_txtEmpFirstName"));
+    public SelenideElement personalDetailsSalesFormMiddleNameField = $(By.id("personal_txtEmpMiddleName"));
+    public SelenideElement personalDetailsSalesFormLastNameField = $(By.id("personal_txtEmpLastName"));
+    public SelenideElement personalDetailsSalesFormEmployeeIdField = $(By.id("personal_txtEmployeeId"));
+    public SelenideElement personalDetailsSalesFormOtherIdField = $(By.id("personal_txtOtherID"));
+    public SelenideElement personalDetailsSalesFormDriversLicenseNumberField = $(By.id("personal_txtLicenNo"));
+    public SelenideElement personalDetailsSalesFormLicenseExpiryDateField = $(By.id("personal_txtLicExpDate"));
+    public SelenideElement personalDetailsSalesFormSSNNumberField = $(By.id("personal_txtNICNo"));
+    public SelenideElement personalDetailsSalesFormSINNumberField = $(By.id("personal_txtSINNo"));
+    public SelenideElement personalDetailsSalesFormMaleCheckBox = $(By.xpath("//input[@name=\"personal[optGender]\"][@value=\"1\"]"));
+    public SelenideElement personalDetailsSalesFormFemaleCheckBox = $(By.xpath("//input[@name=\"personal[optGender]\"][@value=\"2\"]"));
+    public SelenideElement personalDetailsSalesFormMaritalStatusField = $(By.id("personal_cmbMarital"));
+    public SelenideElement personalDetailsSalesFormNationalityField = $(By.id("personal_cmbNation"));
+    public SelenideElement personalDetailsSalesFormDateOfBirthField = $(By.id("personal_DOB"));
+    public SelenideElement personalDetailsSalesFormNickNameField = $(By.id("personal_txtEmpNickName"));
+    public SelenideElement personalDetailsSalesSmokerField = $(By.id("personal_chkSmokeFlag"));
+    public SelenideElement personalDetailsSalesMilitaryServiceField = $(By.id("personal_txtMilitarySer"));
 
     public void addEmployee(String firstName, String lastName) {
 
@@ -61,6 +86,36 @@ public class PimPage {
         employeeSearchField.setValue(firstName + " " + lastName);
         employeeSearchButton.click();
 
+    }
+
+    public  void emploeeInformationSalesFormDetail(){
+        pimButton.click();
+        employeeListButton.click();
+        employeeListSubUnitButton.click();
+        employeeListSubUnitSalesButton.click();
+        employeeSearchButton.click();
+        employeeListSubUnitSalesNathanSales.click();
+        personalDetailsSalesForm.shouldBe(text("Personal Details"), text("Full Name"), text("* First Name"), text("Middle Name"),
+                text("* Last Name"), text("Employee Id"), text("Other Id"), text("Driver's License Number"), text("License Expiry Date"),
+                text("SSN Number"), text("SIN Number"), text("Gender"), text("Male"), text("Female"), text("Marital Status"),
+                text("Date of Birth"), text("Nick Name"), text("Smoker"), text("* Required field"), text("Custom Fields"), text("Blood Type"),
+                text("Attachments"));
+        personalDetailsSalesFormFirstNameField.shouldBe(visible);
+        personalDetailsSalesFormMiddleNameField.shouldBe(visible);
+        personalDetailsSalesFormLastNameField.shouldBe(visible);
+        personalDetailsSalesFormOtherIdField.shouldBe(visible);
+        personalDetailsSalesFormDriversLicenseNumberField.shouldBe(visible);
+        personalDetailsSalesFormLicenseExpiryDateField.shouldBe(visible);
+        personalDetailsSalesFormSSNNumberField.shouldBe(visible);
+        personalDetailsSalesFormSINNumberField.shouldBe(visible);
+        personalDetailsSalesFormMaleCheckBox.shouldBe(visible);
+        personalDetailsSalesFormFemaleCheckBox.shouldBe(visible);
+        personalDetailsSalesFormMaritalStatusField.shouldBe(visible);
+        personalDetailsSalesFormNationalityField.shouldBe(visible);
+        personalDetailsSalesFormDateOfBirthField.shouldBe(visible);
+        personalDetailsSalesFormNickNameField.shouldBe(visible);
+        personalDetailsSalesSmokerField.shouldBe(visible);
+        personalDetailsSalesMilitaryServiceField.shouldBe(visible);
     }
 
 }

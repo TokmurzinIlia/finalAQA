@@ -1,4 +1,4 @@
-import com.codeborne.selenide.Condition;
+
 import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Flaky;
 import org.junit.jupiter.api.*;
@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import pages.*;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 @RunWith(JUnitPlatform.class)
@@ -16,6 +17,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class Tests {
+
     @BeforeAll
     public void setup() {
 
@@ -36,7 +38,7 @@ public void loginTest() {
         LoginPage loginPage = new LoginPage();
         AdminPage adminPage = new AdminPage();
         loginPage.logIn();
-        adminPage.lableIcon.shouldBe(Condition.visible);
+        adminPage.lableIcon.shouldBe(visible);
 
 
     }
@@ -204,6 +206,16 @@ public void loginTest() {
         DashBoardPage dashBoardPage = new DashBoardPage();
         loginPage.logIn();
         dashBoardPage.dashBoardPagePresenceElement();
+    }
+    @Test
+
+    @Order(14)
+    public  void emploeeInformationSalesFormDetail(){
+        LoginPage loginPage = new LoginPage();
+        PimPage pimPage = new PimPage();
+        loginPage.logIn();
+        pimPage.emploeeInformationSalesFormDetail();
+
     }
 
 
