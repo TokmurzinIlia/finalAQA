@@ -1,5 +1,6 @@
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 
@@ -10,6 +11,7 @@ import pages.*;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.switchTo;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 
@@ -52,7 +54,7 @@ public void loginTest() {
         AdminPage adminPage = new AdminPage();
         loginPage.logIn();
         adminPage.lableIcon.shouldBe(visible);
-        loginPage.logOut();
+
 
 
     }
@@ -69,7 +71,7 @@ public void loginTest() {
         loginPage.logIn();
         adminPage.pathAddUserMenu();
         adminPage.addUserFormValidation();
-        loginPage.logOut();
+
     }
 
     @Severity(SeverityLevel.CRITICAL)
@@ -89,7 +91,7 @@ public void loginTest() {
                 adminPage.userName,"12345678","12345678");
         adminPage.resultTableForm
                 .shouldBe(text(pimPage.firstName + " " + pimPage.lastName));
-        loginPage.logOut();
+
     }
 
     @Severity(SeverityLevel.CRITICAL)
@@ -107,7 +109,7 @@ public void loginTest() {
         pimPage.addEmployee(pimPage.firstName, pimPage.lastName);
         String employeeFullName = pimPage.firstName + " " + pimPage.lastName;
         pimPage.employeeForm.shouldBe(text(employeeFullName));
-        loginPage.logOut();
+
     }
 
 
@@ -125,7 +127,7 @@ public void loginTest() {
         adminPage.adminPageTitle();
         adminPage.deleteUser();
         adminPage.resultTableForm.shouldNotBe(text(adminPage.userName));
-        loginPage.logOut();
+
         }
 
 
@@ -141,7 +143,7 @@ public void loginTest() {
         loginPage.logIn();
         pimPage.deleteEmploee(pimPage.firstName, pimPage.lastName);
         pimPage.resultTableForm.shouldNotBe(text(pimPage.lastName));
-        loginPage.logOut();
+
     }
 
 
@@ -160,7 +162,7 @@ public void loginTest() {
         recruitmentPage.candidateForm.shouldBe
                 (text(recruitmentPage.firstName + " "
                         + recruitmentPage.lastName));
-        loginPage.logOut();
+
     }
 
     @Severity(SeverityLevel.NORMAL)
@@ -179,7 +181,7 @@ public void loginTest() {
         recruitmentPage.candidateForm.shouldNotBe
                 (text(recruitmentPage.firstName + "  "
                         + recruitmentPage.lastName));
-        loginPage.logOut();
+
     }
 
 
@@ -206,7 +208,7 @@ public void loginTest() {
         adminPage.saveButton();
         adminPage.jobTitleForm.shouldBe(text(adminPage.jobTitle1),
                 text(adminPage.jobTitle2), text(adminPage.jobTitle3));
-        loginPage.logOut();
+
     }
 
 
@@ -227,7 +229,7 @@ public void loginTest() {
         adminPage.deleteJobTitle(adminPage.jobTitle3);
         adminPage.jobTitleForm.shouldNotBe(text(adminPage.jobTitle1),
                 text(adminPage.jobTitle2), text(adminPage.jobTitle3));
-        loginPage.logOut();
+
 }
 
 
@@ -243,7 +245,7 @@ public void loginTest() {
         loginPage.logIn();
         leavePage.pathAssingLeave();
         leavePage.addAssingLeaveFormValidation();
-        loginPage.logOut();
+
     }
 
     @Severity(SeverityLevel.NORMAL)
@@ -267,7 +269,7 @@ public void loginTest() {
         leavePage.leaveListSearchForm.shouldBe(text(employeeFullName));
         pimPage.deleteEmploee(pimPage.firstName, pimPage.lastName);
         pimPage.resultTableForm.shouldNotBe(text(pimPage.lastName));
-        loginPage.logOut();
+
     }
 
     @Severity(SeverityLevel.MINOR)
@@ -282,7 +284,7 @@ public void loginTest() {
         DashBoardPage dashBoardPage = new DashBoardPage();
         loginPage.logIn();
         dashBoardPage.dashBoardPagePresenceElement();
-        loginPage.logOut();
+
     }
 
     @Severity(SeverityLevel.NORMAL)
@@ -296,7 +298,7 @@ public void loginTest() {
         PimPage pimPage = new PimPage();
         loginPage.logIn();
         pimPage.emploeeInformationSalesFormDetail();
-        loginPage.logOut();
+
 
     }
 
@@ -315,6 +317,26 @@ public void loginTest() {
 
     }
 
+
+    @Severity(SeverityLevel.MINOR)
+    @Description("Follow the logo link")
+    @Feature("Follow the logo link")
+    @DisplayName("Follow the logo link")
+    @Test
+    @Order(16)
+    public  void followTheLogoLink(){
+        LoginPage loginPage = new LoginPage();
+        AdminPage adminPage = new AdminPage();
+        loginPage.logIn();
+        adminPage.lableIcon.click();
+
+        switchTo().window(1);
+        String pageCurrentUrl = url();
+        Assertions.assertEquals("https://www.orangehrm.com/", pageCurrentUrl,
+                "Открыта не https://www.orangehrm.com/ или название страницы неверно");
+        Selenide.closeWindow();
+        switchTo().window(0);
+    }
 
 
 
