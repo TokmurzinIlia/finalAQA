@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
@@ -63,7 +64,7 @@ public class LeavePage {
     public String emploeeName = "Otto Pilot";
     String comment = "New year";
 
-
+    @Step("Validation the form for adding vacations")
     public void addAssingLeaveFormValidation(){
         assingLeaveContent.shouldBe(text("Assign Leave"),
                 text("Employee Name *"), text("Leave Type *"), text("Leave Balance"),
@@ -166,10 +167,13 @@ public class LeavePage {
 
     }
 
+    @Step("Open AssingLeave")
     public void pathAssingLeave(){
         leaveButton.click();
         assingLeaveButton.click();
     }
+
+    @Step("Open AssingLeave")
     public void addAssingLeave(String emploeeName){
         employeeNameField.setValue(emploeeName).pressEnter();
         leaveTypeField.click();

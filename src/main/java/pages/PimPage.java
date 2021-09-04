@@ -3,6 +3,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
@@ -58,6 +59,8 @@ public class PimPage {
     public SelenideElement personalDetailsSalesSmokerField = $(By.id("personal_chkSmokeFlag"));
     public SelenideElement personalDetailsSalesMilitaryServiceField = $(By.id("personal_txtMilitarySer"));
 
+
+    @Step("Adding employee")
     public void addEmployee(String firstName, String lastName) {
 
         pimButton.click();
@@ -75,6 +78,9 @@ public class PimPage {
 
 
     }
+
+
+    @Step("Deleting a employee")
     public void deleteEmploee(String firstName, String lastName){
         pimButton.click();
         currentAndPastEmployeesButton.click();
@@ -83,11 +89,12 @@ public class PimPage {
         employeeNameCheckbox.click();
         deleteEmployeeButton.click();
         deleteRecordOkButton.click();
-        employeeSearchField.setValue(firstName + " " + lastName);
         employeeSearchButton.click();
 
     }
 
+
+    @Step("Sales form validation")
     public  void emploeeInformationSalesFormDetail(){
         pimButton.click();
         employeeListButton.click();

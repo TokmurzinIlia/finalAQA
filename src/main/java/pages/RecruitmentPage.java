@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -52,7 +53,7 @@ public class RecruitmentPage {
     public SelenideElement deleteRecordOkButton = $(By.id("dialogDeleteBtn"));
 
 
-
+    @Step("Adding a candidate")
     public void addCandidate(){
         recruitmentButton.click();
         addCandidateButton.click();
@@ -74,6 +75,7 @@ public class RecruitmentPage {
 
     }
 
+    @Step("Removing a candidate")
     public void deleteCandidate(){
         recruitmentButton.click();
         candidateNameSearchField.setValue(firstName + " " + lastName);

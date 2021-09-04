@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
@@ -26,6 +27,8 @@ public class DashBoardPage {
     SelenideElement legendMarker7 = $(By.xpath("//div[@style=\"width:4px;height:0;border:5px solid rgb(140,172,198);overflow:hidden\"]"));
     SelenideElement dashBoardForm = $(By.id("content"));
 
+
+    @Step("Checking items dashboard")
     public void dashBoardPagePresenceElement(){
         dashBoardButton.click();
         assignLeaveIcon.shouldBe(visible);

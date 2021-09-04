@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
@@ -86,12 +87,14 @@ public class AdminPage {
             "']/../..//input[@name=\"chkSelectRow[]\"]";
     public SelenideElement jobTitleCheckbox3 = $(By.xpath(jobTitleCheckboxLocator3));
 
-    public void addUserMenu() {
+    @Step("Open  add user menu")
+    public void pathAddUserMenu() {
 
         adminButton.click();
         addButton.click();
     }
 
+    @Step("User add form validation")
     public void addUserFormValidation(){
         addUserForm.shouldBe(text("User Role *"))
                    .shouldBe(text("Employee Name *"))
@@ -106,6 +109,8 @@ public class AdminPage {
         passwordField.shouldBe(visible);
         confirmPasswordField.shouldBe(visible);
     }
+
+    @Step("Adding user")
     public void addUser(String employeeName, String userName,
                         String password, String  confirmPassword){
         employeeNameField.setValue(employeeName);
@@ -116,7 +121,7 @@ public class AdminPage {
         userSearchField.setValue(userName);
         userSearchButton.click();
     }
-
+    @Step("Deleting a user")
     public void deleteUser(){
         userSearchField.setValue(userName);
         userSearchButton.click();
@@ -128,17 +133,20 @@ public class AdminPage {
 
     }
 
+    @Step("Open admin page title")
     public void adminPageTitle() {
 
         adminButton.click();
     }
 
+    @Step("Fill in the job details")
     public void jobTitleData(String jobTitle, String jobDescription, String jobNote){
         jobTitleJobTitleField.setValue(jobTitle);
         jobTitleJobDescriptionField.setValue(jobDescription);
         jobTitleJobNoteField.setValue(jobNote);
     }
 
+    @Step("Open job titles")
     public void pathJobTitles(){
         jobButton.click();
         jobTitleButton.click();
@@ -153,6 +161,7 @@ public class AdminPage {
         saveButton.click();
     }
 
+    @Step("Delete job")
     public void deleteJobTitle(String jobTitle){
         String jobTitleCheckboxLocator = "//a[text()='" + jobTitle +
                 "']/../..//input[@name=\"chkSelectRow[]\"]";
