@@ -125,7 +125,7 @@
                 -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
             </argLine>
             <systemPropertyVariables>
-                <allure.results.directory>C:\Program Files\allure\allure-commandline-2.13.6\allure-2.13.6/allure-results</allure.results.directory>
+                <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
 
                 <junit.jupiter.extensions.autodetection.enabled>true</junit.jupiter.extensions.autodetection.enabled>
                 <junit.jupiter.execution.parallel.enabled>true</junit.jupiter.execution.parallel.enabled>
@@ -152,7 +152,7 @@
         <version>2.10.0</version>
         <configuration>
             <reportVersion>${allure.version}</reportVersion>
-            <resultsDirectory>C:\Program Files\allure\allure-commandline-2.13.6\allure-2.13.6/allure-results</resultsDirectory>
+            <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
         </configuration>
     </plugin>
 
