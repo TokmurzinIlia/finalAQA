@@ -4,9 +4,6 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
-
 import pages.*;
 
 import static com.codeborne.selenide.Condition.text;
@@ -15,7 +12,7 @@ import static com.codeborne.selenide.Selenide.switchTo;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 
-//@RunWith(JUnitPlatform.class)
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
